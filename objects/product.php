@@ -45,4 +45,25 @@ class Product
             return false;
         }
     }
+
+    // read products
+    function readAll(){
+    
+        // select all query
+        $query = "SELECT 
+                    id, name, description, price, created 
+                FROM 
+                    " . $this->table_name . "
+                ORDER BY 
+                    id DESC";
+    
+        // prepare query statement
+        $stmt = $this->conn->prepare( $query );
+        
+        // execute query
+        $stmt->execute();
+        
+        return $stmt;
+    }
 }
+?>
